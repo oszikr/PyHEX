@@ -47,17 +47,27 @@ class board:
         self.board.put(index, value)
 
     def getLastPlayer(self):
-        value = 1 if (self.state % 2 != 0) else 2
-        return value
+        return \
+            1 if (self.state % 2 != 0) else 2
+
+    def firstPlayerWins(self):
+        return\
+            True if (self.state % 2 != 0) else False
 
 if __name__ == "__main__":
-    infile = open('raw_games_small.dat', 'r')
-    print("Playing games", end='')
+    infile = open('raw_games.dat', 'r')
+    print("Playing games:")
+    i = 0
     for line in infile:
-        print(".", end='')
+        i += 1
+        print("Game", i)
         game = board(boardsize)
         moves = line.split()
         for move in moves:
             game.put(move)
+        print(game)
+        print(game.getLastPlayer())
+        print(game.firstPlayerWins())
+        print()
     print()
-    print("End")
+    print("End.")
