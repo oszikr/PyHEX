@@ -56,6 +56,7 @@ class board:
 
 if __name__ == "__main__":
     infile = open('raw_games.dat', 'r')
+    outfile = open("raw_games_scored.dat", "w+")
     print("Playing games:")
     i = 0
     for line in infile:
@@ -69,5 +70,6 @@ if __name__ == "__main__":
         print(game.getLastPlayer())
         print(game.firstPlayerWins())
         print()
-    print()
+        outfile.write(str(game.firstPlayerWins()) + '\n')
+    outfile.close()
     print("End.")
