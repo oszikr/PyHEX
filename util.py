@@ -49,7 +49,7 @@ def getonehotencoder():
 
 def remove3rdcols(X):
     cols = []
-    for i in range(169):
+    for i in range(X.shape[1]):
         if i % 3 == 0:
             cols.append(i)
     X = np.delete(X, cols, axis=1)

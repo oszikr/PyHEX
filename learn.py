@@ -17,13 +17,11 @@ import util
 
 # Returns DataFrame. A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 print(Back.GREEN + "Loading dataset from file" + Style.RESET_ALL)
-dataset = pd.read_csv('raw_games_small_scored_states.csv', header=None)
+dataset = pd.read_csv('raw_games_scored_states.csv', header=None)
 
 print(Back.GREEN + "selects first 169 columns" + Style.RESET_ALL)
 X = dataset.iloc[:, 0:169].values # selects first 9 columns
 y = dataset.iloc[:, 169:170].values # select the last column
-print(X)
-print(y)
 
 print(Back.GREEN + "Encode categorical variables as numeric" + Style.RESET_ALL)
 labelencoder_X = util.getlabelencoder()
@@ -42,7 +40,7 @@ print(Back.GREEN + "Remove every third column" + Style.RESET_ALL)
 X = util.remove3rdcols(X)
 
 # Train/test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 print(X_train)
 
 # Initialize neural network
@@ -90,8 +88,8 @@ nnet.load_weights("model.h5")
 
 print(Back.GREEN + "Predicting the test set results from harddisk" + Style.RESET_ALL)
 y_pred = nnet.predict(X_test)
-count = 0
+countcorrect = 0
 for _ in range(len(y_pred)):
     if y_test[_] == round(y_pred[_][0]):
-        count += 1
+        countcorrect += 1
 print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")
