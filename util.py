@@ -11,6 +11,10 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.models import model_from_json
 
+"""
+Collections of read network, encoders and functions to learn and predict.
+"""
+
 def getnnet():
     json_file = open('model.json', 'r')
     loaded_model_json = json_file.read()

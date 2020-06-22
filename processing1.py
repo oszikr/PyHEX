@@ -1,10 +1,23 @@
 from board import board
+
+"""
+The program read games and write game outcome to the output file. 
+The output file name is generated based on input file name.
+The input raw_games.dat contains a list of moves corresponding to a 13x13 hex game on each line. 
+A game represented by space separated coordinates. 
+"""
+
 boardsize = 13
 
 def generatescoring(filename):
+    print("Reading input file:", filename)
     infile = open(filename, "r")
+
+    print("Creating output file.")
     filenames = filename.split(".")
-    outfile = open(filenames[0] + "_scored." + filenames[1], "w")
+    outfilename = filenames[0] + "_scored." + filenames[1]
+    outfile = open(outfilename, "w")
+
     print("Playing games:")
     i = 0
     for line in infile:
@@ -20,6 +33,7 @@ def generatescoring(filename):
         outfile.write(str(game.firstPlayerWins("positive", "negative")) + '\n')
     outfile.close()
     print("End.")
+
 
 if __name__ == "__main__":
     generatescoring("raw_games_small.dat")

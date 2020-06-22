@@ -15,6 +15,10 @@ from keras.models import model_from_json
 
 import util
 
+"""
+Create neural network from learning data set
+"""
+
 # Returns DataFrame. A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 print(Back.GREEN + "Loading dataset from file" + Style.RESET_ALL)
 dataset = pd.read_csv('raw_games_scored_states.csv', header=None)
@@ -76,20 +80,3 @@ with open("model.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
 nnet.save_weights("model.h5")
-
-print(Back.GREEN + "Loading model from disk" + Style.RESET_ALL)
-#load json and create model
-json_file = open('model.json', 'r')
-loaded_model_json = json_file.read()
-json_file.close()
-nnet = model_from_json(loaded_model_json)
-# load weights into new model
-nnet.load_weights("model.h5")
-
-print(Back.GREEN + "Predicting the test set results from harddisk" + Style.RESET_ALL)
-y_pred = nnet.predict(X_test)
-countcorrect = 0
-for _ in range(len(y_pred)):
-    if y_test[_] == round(y_pred[_][0]):
-        countcorrect += 1
-print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")

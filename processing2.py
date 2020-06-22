@@ -1,5 +1,13 @@
 from board import board
 import numpy as np
+"""
+The program read games and outcomes, and write all states with the game outcome to the output file. 
+The output file name is generated based on input file name.
+The input raw_games.dat contains a list of moves corresponding to a 13x13 hex game on each line. 
+A game represented by space separated coordinates. 
+The input raw_games_scored.dat contains game outcomes on each line.
+"""
+
 boardsize = 13
 
 def generatescoredstates(gamesfilename, scoresfilename):
