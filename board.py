@@ -51,10 +51,10 @@ class board:
     def put(self, pos):
         self.state += 1
         value = 1 if (self.state % 2 != 0) else 2
-        self.put(self, pos, value)
+        self.putv(pos, value)
 
     # puts a marker to a position with parameterized value
-    def put(self, pos, value):
+    def putv(self, pos, value):
         i = int(ord(pos[0]) - 97) # ord('a') == 97
         j = int(pos[1:3]) - 1
         index = i * self.size + j
