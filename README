@@ -1,0 +1,34 @@
+raw_games.dat:
+Contains 10k games.
+
+raw_games_small.dat:
+Contains first 10 games from raw_games.dat.
+
+preprocessing1.py:
+Create raw_games_scored.dat from raw_games.dat.
+Create raw_games_small_scored.dat from raw_games_small.dat.
+The *_scored.dat files contains labels to each line. The label is the game outcome game.
+
+preprocessing2.py:
+Create raw_games_scored_states.csv from raw_games_scored.dat.
+Create raw_games_small_scored_states.csv from raw_games_small_scored.dat.
+The *_scored_states.csv files contains each game states and labels. The label is the game outcome for all game states.
+
+learn.py:
+Creating model.h5 and model.json NNET files and testing it. test size is 20%.
+
+test.py:
+Lead NNET and test it. The test is same as learn.py
+
+predict.py:
+It loads the NNET, get input and print prediction.
+
+service.py:
+Service process for CPP application. It loads NNet and ask input. The input is an array of states. The output is an
+array of predictions.
+
+util.py:
+Functions for save and load NNET, labelencoders, onehotencoder and other.
+
+board.py:
+Class for HEX board.
