@@ -32,3 +32,6 @@ Functions for save and load NNET, labelencoders, onehotencoder and other.
 
 board.py:
 Class for HEX board.
+
+requirements.txt:
+installed python packages (pip freeze).
