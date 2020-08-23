@@ -1,5 +1,5 @@
 raw_games.dat:
-Contains 10k games.
+Contains ~10k games and ~500k states.
 
 raw_games_small.dat:
 Contains first 10 games from raw_games.dat.
@@ -18,7 +18,7 @@ learn.py:
 Creating model.h5 and model.json NNET files and testing it. test size is 20%.
 
 test.py:
-Lead NNET and test it. The test is same as learn.py
+Load NNET and test it. The test is same as learn.py
 
 predict.py:
 It loads the NNET, get input and print prediction.
