@@ -18,20 +18,30 @@ def generatescoring(filename):
     outfilename = filenames[0] + "_scored." + filenames[1]
     outfile = open(outfilename, "w")
 
+    outfilename2 = filenames[0] + "_steps." + filenames[1]
+    outfile2 = open(outfilename2, "w")
+
     print("Playing games:")
+    s = 0
     i = 0
     for line in infile:
         i += 1
         print("Game", i)
         game = board(boardsize)
         moves = line.split()
+        j = 0;
         for move in moves:
             game.put(move)
+            j += 1
+            s += 1;
         print(game)
         print(game.firstPlayerWins())
         print()
         outfile.write(str(game.firstPlayerWins("positive", "negative")) + '\n')
+        outfile2.write(str(j) + '\n')
+    print("Total", s, "states")
     outfile.close()
+    outfile2.close()
     print("End.")
 
 

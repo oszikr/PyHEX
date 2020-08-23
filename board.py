@@ -18,6 +18,7 @@ class board:
         out = ""
         for it in self.board:
             out += str(it) + ","
+        out = out[:-1]
         return out
 
     # returns the current game as text, pretty print for conolse.

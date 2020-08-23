@@ -1,5 +1,5 @@
 raw_games.dat:
-Contains ~10k games and ~500k states.
+Contains 10985 games and 550983 states.
 
 raw_games_small.dat:
 Contains first 10 games from raw_games.dat.
