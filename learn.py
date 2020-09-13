@@ -21,15 +21,15 @@ Create neural network from learning data set
 
 # Returns DataFrame. A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 print(Back.GREEN + "Loading dataset from file" + Style.RESET_ALL)
-dataset = pd.read_csv('raw_games_scored_states.csv', header=None)
+dataset = pd.read_csv('raw_games_small_scored_states.csv', header=None)
 
-print(Back.GREEN + "selects first 169 columns" + Style.RESET_ALL)
-X = dataset.iloc[:, 0:169].values # selects first 9 columns
-y = dataset.iloc[:, 169:170].values # select the last column
+print(Back.GREEN + "selects first 169+1 columns" + Style.RESET_ALL)
+X = dataset.iloc[:, 0:(169+1)].values # selects first 169 (13x13) columns + 1 process variable
+y = dataset.iloc[:, (169+1):171].values # select the last but one column -- outcome
 
 print(Back.GREEN + "Encode categorical variables as numeric" + Style.RESET_ALL)
 labelencoder_X = util.getlabelencoder()
-for _ in range(169):
+for _ in range(169+1):
     X[:, _] = labelencoder_X.transform(X[:, _])
 
 print(Back.GREEN + "Encode target categorical variable as numberic" + Style.RESET_ALL)
@@ -41,7 +41,7 @@ onehotencoder = util.getonehotencoder()
 X = onehotencoder.transform(X).toarray()
 
 print(Back.GREEN + "Remove every third column" + Style.RESET_ALL)
-X = util.remove3rdcols(X)
+X = util.remove3rdcols(X, (169+1)*3) #507
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
@@ -51,10 +51,10 @@ print(X_train)
 nnet = Sequential()
 
 # Add first hidden layer (and input layer)
-nnet.add(Dense(units=169, kernel_initializer='uniform', activation='relu', input_dim=338))
+nnet.add(Dense(units=169+1, kernel_initializer='uniform', activation='relu', input_dim=(169+1)*2))
 
 # Add second hidden layer
-nnet.add(Dense(units=169, kernel_initializer='uniform', activation='relu'))
+nnet.add(Dense(units=169+1, kernel_initializer='uniform', activation='relu'))
 
 # Add output layer
 nnet.add(Dense(units=1, kernel_initializer='uniform', activation='sigmoid'))

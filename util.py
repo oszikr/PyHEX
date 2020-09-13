@@ -25,7 +25,7 @@ def getnnet():
 
 def getlabelencoder():
     labelencoder = LabelEncoder()
-    labelencoder.fit([0, 1, 2])
+    labelencoder.fit([0, 1, 2]) # 0,1,2 == blank, blue, red || or process variable
     return labelencoder
 
 def getlabelencoderSc():
@@ -39,7 +39,8 @@ def getonehotencoder():
     array0 = np.array([], dtype="object")
     array1 = np.array([], dtype="object")
     array2 = np.array([], dtype="object")
-    for i in range(13*13):
+    n = 13
+    for i in range(n*n+1):
         array0 = np.append(array0, 0)
         array1 = np.append(array1, 1)
         array2 = np.append(array2, 2)
@@ -51,10 +52,11 @@ def getonehotencoder():
     ])
     return onehotencoder
 
-def remove3rdcols(X):
-    cols = []
-    for i in range(X.shape[1]):
-        if i % 3 == 0:
-            cols.append(i)
-    X = np.delete(X, cols, axis=1)
+def remove3rdcols(X, limit):
+    print("remove3rdcols>", "size:", X.shape[1], "limit:", limit)
+    colstodelete = []
+    for i in range(X.shape[1]): # range(3*169+1) = 507+1 = 508 => for(i=0; i<508; i++)
+        #if i % 3 == 0 and i < limit:
+        colstodelete.append(i) # i = 0, 3, 6, .. 504
+    X = np.delete(X, colstodelete, axis=1)
     return X
