@@ -49,4 +49,6 @@ for _ in range(len(y_pred)):
     print("Expected:", y_test[_], "Actual:", round(y_pred[_][0] , 10))
     if y_test[_] == round(y_pred[_][0]):
         count += 1
-print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")
+#print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")
+print(count, len(y_pred))
+print(count/len(y_pred), "%")

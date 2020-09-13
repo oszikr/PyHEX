@@ -71,7 +71,9 @@ count = 0
 for _ in range(len(y_pred)):
     if y_test[_] == round(y_pred[_][0]):
         count += 1
-print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")
+#print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")
+print(count, len(y_pred))
+print(count/len(y_pred), "%")
 
 print(Back.GREEN + "Saving model to disk" + Style.RESET_ALL)
 # serialize model to JSON
