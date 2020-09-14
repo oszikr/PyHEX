@@ -25,7 +25,7 @@ print("Start Time =", start_time)
 
 # Returns DataFrame. A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 print(Back.GREEN + "Loading dataset from file" + Style.RESET_ALL)
-dataset = pd.read_csv('raw_games_small_scored_states.csv', header=None)
+dataset = pd.read_csv('raw_games_scored_states.csv', header=None)
 
 print(Back.GREEN + "selects first 169+1 columns" + Style.RESET_ALL)
 X = dataset.iloc[:, 0:(169+1)].values # selects first 169 (13x13) columns + 1 process variable
@@ -77,7 +77,7 @@ for _ in range(len(y_pred)):
         count += 1
 #print(f"{count} / {len(y_pred)} = {count/len(y_pred)}%")
 print(count, len(y_pred))
-print(count/len(y_pred), "%")
+print(count*100/len(y_pred), "%")
 
 print(Back.GREEN + "Saving model to disk" + Style.RESET_ALL)
 # serialize model to JSON

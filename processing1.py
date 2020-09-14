@@ -1,4 +1,5 @@
 from board import board
+from datetime import datetime
 
 """
 The program read games and write game outcome to the output file. 
@@ -46,5 +47,12 @@ def generatescoring(filename):
 
 
 if __name__ == "__main__":
+    start_time = datetime.now().strftime("%H:%M:%S")
+    print("Start Time =", start_time)
+
     generatescoring("raw_games_small.dat")
     generatescoring("raw_games.dat")
+
+    stop_time = datetime.now().strftime("%H:%M:%S")
+    print("Start Time =", start_time)
+    print("Stop Time  =", stop_time)

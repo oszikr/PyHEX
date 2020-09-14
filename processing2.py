@@ -1,4 +1,5 @@
 from board import board
+from datetime import datetime
 import numpy as np
 """
 The program read games and outcomes, and write all states with the game outcome to the output file. 
@@ -49,5 +50,12 @@ def generatescoredstates(gamesfilename, scoresfilename, stepsfilename):
     print("End.")
 
 if __name__ == "__main__":
+    start_time = datetime.now().strftime("%H:%M:%S")
+    print("Start Time =", start_time)
+
     generatescoredstates("raw_games_small.dat", "raw_games_small_scored.dat", "raw_games_small_steps.dat")
     generatescoredstates("raw_games.dat", "raw_games_scored.dat", "raw_games_steps.dat")
+
+    stop_time = datetime.now().strftime("%H:%M:%S")
+    print("Start Time =", start_time)
+    print("Stop Time  =", stop_time)
