@@ -56,7 +56,7 @@ def remove3rdcols(X, limit):
     print("remove3rdcols>", "size:", X.shape[1], "limit:", limit)
     colstodelete = []
     for i in range(X.shape[1]): # range(3*169+1) = 507+1 = 508 => for(i=0; i<508; i++)
-        #if i % 3 == 0 and i < limit:
-        colstodelete.append(i) # i = 0, 3, 6, .. 504
+        if i % 3 == 0: #and i < limit:
+            colstodelete.append(i) # i = 0, 3, 6, .. 504
     X = np.delete(X, colstodelete, axis=1)
     return X

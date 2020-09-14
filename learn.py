@@ -4,6 +4,7 @@
 import numpy as np
 import pandas as pd
 from colorama import Fore, Back, Style
+from datetime import datetime
 
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
@@ -18,6 +19,9 @@ import util
 """
 Create neural network from learning data set
 """
+
+start_time = datetime.now().strftime("%H:%M:%S")
+print("Start Time =", start_time)
 
 # Returns DataFrame. A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 print(Back.GREEN + "Loading dataset from file" + Style.RESET_ALL)
@@ -82,3 +86,7 @@ with open("model.json", "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
 nnet.save_weights("model.h5")
+
+stop_time = datetime.now().strftime("%H:%M:%S")
+print("Start Time =", start_time)
+print("Stop Time  =", stop_time)
