@@ -45,7 +45,7 @@ onehotencoder = util.getonehotencoder()
 X = onehotencoder.transform(X).toarray()
 
 print(Back.GREEN + "Remove every third column" + Style.RESET_ALL)
-X = util.remove3rdcols(X, (169+1)*3) #507
+X = util.remove3rdcols(X)
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)

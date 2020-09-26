@@ -37,7 +37,7 @@ y[:, 0] = labelencoder_y.transform(y[:, 0])
 onehotencoder = util.getonehotencoder()
 X = onehotencoder.transform(X).toarray()
 
-X = util.remove3rdcols(X, (169+1)*3)
+X = util.remove3rdcols(X)
 
 # Train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)

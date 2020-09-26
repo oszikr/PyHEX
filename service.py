@@ -26,7 +26,7 @@ def predict(X):
 
     X = onehotencoder.transform(X).toarray()
 
-    X = util.remove3rdcols(X, ((169+1)*3))
+    X = util.remove3rdcols(X)
 
     y_pred = nnet.predict(X)
     return y_pred
