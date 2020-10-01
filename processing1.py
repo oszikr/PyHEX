@@ -32,7 +32,9 @@ def generatescoring(filename):
         moves = line.split()
         j = 0;
         for move in moves:
-            game.put(move)
+            #print(move)
+            #game.put(move)
+            print(game.__str__())
             j += 1
             s += 1;
         print(game)

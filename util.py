@@ -1,4 +1,3 @@
-# https://www.kdnuggets.com/2017/09/neural-networks-tic-tac-toe-keras.html
 # https://pandas.pydata.org/docs/reference/api/pandas.Series.iloc.html#pandas.Series.iloc
 # https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
 import numpy as np
